@@ -6,7 +6,7 @@ const Card = ({ coffee }) => {
         <div className=" mx-auto ">
             <div className="card card-compact bg-base-100 w-96 shadow-xl rounded-2xl">
                 <Link to={`/coffee/${id}`} 
-                className="transition hover:scale-105 shadow-xl overflow-hidden">
+                className="transition hover:scale-105 shadow-xl  rounded-2xl overflow-hidden">
 
                     <figure className="w-full h-48 overflow-hidden rounded-t-2xl">
                         <img

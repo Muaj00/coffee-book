@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
     return (
-        <div className="navbar bg-base-100 container mx-auto px-12">
+        <div className="navbar backdrop-blur-xl bg-white/30 z-50 fixed mx-auto px-16">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -22,27 +22,41 @@ const NavBar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        <NavLink
+                            className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                            to={'/'}>Home
+                        </NavLink>
+
+                        <NavLink
+                            className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                            to={'/coffees'}>Coffees
+                        </NavLink>
+                        <NavLink
+                            className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                            to={'/dashboard'}>Dashboard
+                        </NavLink>
                     </ul>
                 </div>
                 <Link to={'/'} className="text-xl md:text-3xl font-bold">COFFEE_BOOK</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-8 font-semibold">
-                    <Link to={'/'}>Home</Link>
-                    <Link to={'/coffees'}>Coffees</Link>
-                    <Link to={'/dashboard'}>Dashboard</Link>
+                    <NavLink
+                        className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                        to={'/'}>Home
+                    </NavLink>
+
+                    <NavLink
+                        className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                        to={'/coffees'}>Coffees
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) => `font-semibold ${isActive ? ' text-yellow-500' : ''}`}
+                        to={'/dashboard'}>Dashboard
+                    </NavLink>
                 </ul>
             </div>
-            
+
         </div>
     );
 };

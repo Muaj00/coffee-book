@@ -6,14 +6,16 @@ import Footer from "../components/Footer";
 const MainLayouts = () => {
     return (
         <div>
-              {/*Navbarvomponent  */}
-              <NavBar></NavBar>
-              {/*Dynamic Section  */}
-              <div className="min-h-[calc(100vh-232px)] container mx-auto px-12 py-12">
-              <Outlet></Outlet>
-              </div>
-              {/*Footer Component  */}
-              <Footer></Footer>
+            {/*Navbarvomponent  */}
+            <div className="h-16">
+                <NavBar></NavBar>
+            </div>
+            {/*Dynamic Section  */}
+            <div className="min-h-[calc(100vh-232px)] container mx-auto px-12 py-12">
+                <Outlet></Outlet>
+            </div>
+            {/*Footer Component  */}
+            <Footer></Footer>
         </div>
     );
 };
