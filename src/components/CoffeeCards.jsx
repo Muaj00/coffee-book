@@ -1,21 +1,35 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Card from "./Card";
 import { useEffect, useState } from "react";
 
 const CoffeeCards = () => {
-    const {category} = useParams();
+    const navigate = useNavigate();
+    const { category } = useParams();
     const data = useLoaderData();
     const [coffees, setCoffees] = useState([]);
     useEffect(() => {
-        const filteredCoffeeCategory = [...data].filter(coffee => coffee.category === category)
-        setCoffees(filteredCoffeeCategory);
+        if (category) {
+            const filteredCoffeeCategory = [...data].filter(coffee => coffee.category === category)
+            setCoffees(filteredCoffeeCategory);
+        }
+        else {
+            setCoffees(data.slice(0, 6));
+        }
     }, [data, category])
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {
-                coffees.map(coffee => <Card key={coffee.id} coffee={coffee}></Card> )
-            }
-        </div>
+        <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-12">
+                {
+                    coffees.map(coffee => <Card key={coffee.id} coffee={coffee}></Card>)
+                }
+            </div>
+
+            <button className="btn btn-warning" onClick={() => navigate('/coffees')}>
+                View All
+            </button>
+
+        </>
+
     );
 };
 
