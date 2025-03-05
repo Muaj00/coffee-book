@@ -34,7 +34,7 @@ const CoffeeDetails = () => {
             <div className="flex flex-col space-y-4">
                 <h1 className="text-3xl font-thin text-orange-900 font-serif">{coffee.description}</h1>
                 <div className="">
-                    <img className=" rounded-2xl w-1/2 mx-auto" src={coffee.image} alt="" />
+                    <img className=" rounded-2xl w-full md:w-1/2 mx-auto" src={coffee.image} alt="" />
                 </div>
 
                 <div className="flex justify-between items-center my-6">
@@ -52,7 +52,7 @@ const CoffeeDetails = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-center mt-24">
+            <div className="flex flex-col md:flex-row justify-between items-center mt-0 md:mt-24">
                 <div className="hero mt-24">
                     <div className=" flex flex-col space-y-6">
                         <div>
