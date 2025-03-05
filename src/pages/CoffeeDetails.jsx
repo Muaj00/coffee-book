@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import myCoffee from '../assets/nutrition.png';
-import { addCoffee } from "../utilitis";
+import { addCoffee, getAllItems } from "../utilitis";
 
 const CoffeeDetails = () => {
     const { id } = useParams();
+
     const data = useLoaderData();
+
     const [coffee, setCoffee] = useState({});
+
     const { ingredients } = coffee;
-    console.log(ingredients);
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+
     useEffect(() => {
         const singleData = data.find(coffee => coffee.id === parseInt(id));
         setCoffee(singleData);
+        const favorites = getAllItems();
+        const isExist = favorites.find(item => item.id == singleData.id);
+        if(isExist){
+            setIsFavorite(true);
+        }
     }, [data, id]);
 
     const handleFavourite = (coffee) => {
         addCoffee(coffee);
+        setIsFavorite(true);
     }
     return (
         <>
@@ -33,14 +45,14 @@ const CoffeeDetails = () => {
                     </div>
 
                     <div>
-                        <button onClick={()=> handleFavourite(coffee)} className="btn btn-warning text-black">
+                        <button disabled={isFavorite} onClick={() => handleFavourite(coffee)} className="btn btn-warning text-black">
                             Add to Favourite
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-center mt-24"> 
+            <div className="flex flex-col md:flex-row justify-between items-center mt-24">
                 <div className="hero mt-24">
                     <div className=" flex flex-col space-y-6">
                         <div>
