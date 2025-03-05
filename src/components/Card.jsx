@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaTrashCan } from "react-icons/fa6";
-const Card = ({ coffee }) => {
+const Card = ({ coffee, handleRemove }) => {
     const { name, image, ingredients, category, origin, type, id, rating, popularity } = coffee || {};
 
     const {pathname} = useLocation();
@@ -27,7 +27,7 @@ const Card = ({ coffee }) => {
                 </Link>
                 {
                     pathname === '/dashboard' && (
-                        <div className="absolute p-3 bg-warning rounded-full cursor-pointer -top-5 -right-5 "><FaTrashCan /></div>
+                        <div onClick={() => handleRemove(id)} className="absolute p-3 bg-warning rounded-full cursor-pointer -top-5 -right-5 "><FaTrashCan /></div>
                     )
                 }
             </div>

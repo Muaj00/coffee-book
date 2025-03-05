@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { getAllItems } from "../utilitis";
+import { getAllItems, removeCoffee } from "../utilitis";
 import Card from "../components/Card";
 
 
@@ -11,7 +11,13 @@ const Dashboard = () => {
     useEffect(() => {
         const favorite = getAllItems();
         setCoffees(favorite);
-    }, [])
+    }, []);
+
+    const handleRemove = (id) => {
+        removeCoffee(id);
+        const favorite = getAllItems();
+        setCoffees(favorite);
+    }
     return (
         <>
 
@@ -21,7 +27,7 @@ const Dashboard = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-12">
                 {
-                    coffees.map(coffee => <Card key={coffee.id} coffee={coffee}></Card>)
+                    coffees.map(coffee => <Card handleRemove={handleRemove} key={coffee.id} coffee={coffee}></Card>)
                 }
             </div>
 

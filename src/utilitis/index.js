@@ -28,6 +28,13 @@ const addCoffee = (coffee) => {
     toast.success('Successfully added!');
 }
 
+// remove coffees from local storage
 
+const removeCoffee = (id) => {
+    const favourite = getAllItems();
+    const remaining = favourite.filter(coffee => coffee.id != id);
+    localStorage.setItem('favourite', JSON.stringify(remaining));
+    toast.success('Successfully removed!');
+}
 
-export {addCoffee, getAllItems};
+export {addCoffee, getAllItems, removeCoffee};
